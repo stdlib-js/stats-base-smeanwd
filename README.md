@@ -41,32 +41,30 @@ The [arithmetic mean][arithmetic-mean] is defined as
 
 <!-- /.intro -->
 
+<section class="installation">
 
+## Installation
+
+```bash
+npm install @stdlib/stats-base-smeanwd
+```
+
+Alternatively,
+
+-   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm` branch][esm-url].
+-   If you are using Deno, visit the [`deno` branch][deno-url].
+-   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd` branch][umd-url].
+
+The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
+
+</section>
 
 <section class="usage">
 
 ## Usage
 
-To use in Observable,
-
 ```javascript
-smeanwd = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/bundle.js' )
-```
-
-To include the bundle in a webpage,
-
-```html
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/bundle.js"></script>
-```
-
-If no recognized module system is present, access bundle contents via the global scope:
-
-```html
-<script type="text/javascript">
-(function () {
-    window.smeanwd;
-})();
-</script>
+var smeanwd = require( '@stdlib/stats-base-smeanwd' );
 ```
 
 #### smeanwd( N, x, stride )
@@ -170,16 +168,11 @@ var v = smeanwd.ndarray( N, x, 2, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<body>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/bundle.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@umd/bundle.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-float32@umd/bundle.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/bundle.js"></script>
-<script type="text/javascript">
-(function () {
+```javascript
+var randu = require( '@stdlib/random-base-randu' );
+var round = require( '@stdlib/math-base-special-round' );
+var Float32Array = require( '@stdlib/array-float32' );
+var smeanwd = require( '@stdlib/stats-base-smeanwd' );
 
 var x;
 var i;
@@ -192,11 +185,6 @@ console.log( x );
 
 var v = smeanwd( x.length, x, 1 );
 console.log( v );
-
-})();
-</script>
-</body>
-</html>
 ```
 
 </section>
@@ -298,12 +286,13 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 [deno-url]: https://github.com/stdlib-js/stats-base-smeanwd/tree/deno
 [umd-url]: https://github.com/stdlib-js/stats-base-smeanwd/tree/umd
 [esm-url]: https://github.com/stdlib-js/stats-base-smeanwd/tree/esm
+[branches-url]: https://github.com/stdlib-js/stats-base-smeanwd/blob/main/branches.md
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/stats-base-smeanwd/main/LICENSE
 
 [arithmetic-mean]: https://en.wikipedia.org/wiki/Arithmetic_mean
 
-[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32/tree/umd
+[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
@@ -313,13 +302,13 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/stats/base/dmeanwd]: https://github.com/stdlib-js/stats-base-dmeanwd/tree/umd
+[@stdlib/stats/base/dmeanwd]: https://github.com/stdlib-js/stats-base-dmeanwd
 
-[@stdlib/stats/base/meanwd]: https://github.com/stdlib-js/stats-base-meanwd/tree/umd
+[@stdlib/stats/base/meanwd]: https://github.com/stdlib-js/stats-base-meanwd
 
-[@stdlib/stats/base/smean]: https://github.com/stdlib-js/stats-base-smean/tree/umd
+[@stdlib/stats/base/smean]: https://github.com/stdlib-js/stats-base-smean
 
-[@stdlib/stats/base/snanmeanwd]: https://github.com/stdlib-js/stats-base-snanmeanwd/tree/umd
+[@stdlib/stats/base/snanmeanwd]: https://github.com/stdlib-js/stats-base-snanmeanwd
 
 <!-- </related-links> -->
 
