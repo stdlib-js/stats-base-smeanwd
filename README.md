@@ -56,32 +56,38 @@ The [arithmetic mean][arithmetic-mean] is defined as
 
 <!-- /.intro -->
 
-<section class="installation">
 
-## Installation
-
-```bash
-npm install @stdlib/stats-base-smeanwd
-```
-
-Alternatively,
-
--   To load the package in a website via a `script` tag without installation and bundlers, use the [ES Module][es-module] available on the [`esm`][esm-url] branch (see [README][esm-readme]).
--   If you are using Deno, visit the [`deno`][deno-url] branch (see [README][deno-readme] for usage intructions).
--   For use in Observable, or in browser/node environments, use the [Universal Module Definition (UMD)][umd] build available on the [`umd`][umd-url] branch (see [README][umd-readme]).
-
-The [branches.md][branches-url] file summarizes the available branches and displays a diagram illustrating their relationships.
-
-To view installation and usage instructions specific to each branch build, be sure to explicitly navigate to the respective README files on each branch, as linked to above.
-
-</section>
 
 <section class="usage">
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var smeanwd = require( '@stdlib/stats-base-smeanwd' );
+smeanwd = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/browser.js' )
+```
+
+To vendor stdlib functionality and avoid installing dependency trees for Node.js, you can use the UMD server build:
+
+```javascript
+var smeanwd = require( 'path/to/vendor/umd/stats-base-smeanwd/index.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/browser.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.smeanwd;
+})();
+</script>
 ```
 
 #### smeanwd( N, x, strideX )
@@ -176,9 +182,14 @@ var v = smeanwd.ndarray( 4, x, 2, 1 );
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var discreteUniform = require( '@stdlib/random-array-discrete-uniform' );
-var smeanwd = require( '@stdlib/stats-base-smeanwd' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-array-discrete-uniform@umd/browser.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/stats-base-smeanwd@umd/browser.js"></script>
+<script type="text/javascript">
+(function () {
 
 var x = discreteUniform( 10, -50, 50, {
     'dtype': 'float32'
@@ -187,6 +198,11 @@ console.log( x );
 
 var v = smeanwd( x.length, x, 1 );
 console.log( v );
+
+})();
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -195,120 +211,7 @@ console.log( v );
 
 <!-- C interface documentation. -->
 
-* * *
 
-<section class="c">
-
-## C APIs
-
-<!-- Section to include introductory text. Make sure to keep an empty line after the intro `section` element and another before the `/section` close. -->
-
-<section class="intro">
-
-</section>
-
-<!-- /.intro -->
-
-<!-- C usage documentation. -->
-
-<section class="usage">
-
-### Usage
-
-```c
-#include "stdlib/stats/base/smeanwd.h"
-```
-
-#### stdlib_strided_smeanwd( N, \*X, strideX )
-
-Computes the [arithmetic mean][arithmetic-mean] of a single-precision floating-point strided array using Welford's algorithm.
-
-```c
-const float x[] = { 1.0f, 2.0f, 3.0f };
-
-float v = stdlib_strided_smeanwd( 3, x, 1 );
-// returns 2.0f
-```
-
-The function accepts the following arguments:
-
--   **N**: `[in] CBLAS_INT` number of indexed elements.
--   **X**: `[in] float*` input array.
--   **strideX**: `[in] CBLAS_INT` stride length for `X`.
-
-```c
-float stdlib_strided_smeanwd( const CBLAS_INT N, const float *X, const CBLAS_INT strideX );
-```
-
-#### stdlib_strided_smeanwd_ndarray( N, \*X, strideX, offsetX )
-
-Computes the [arithmetic mean][arithmetic-mean] of a single-precision floating-point strided array using Welford's algorithm and alternative indexing semantics.
-
-```c
-const float x[] = { 1.0f, 2.0f, 3.0f };
-
-float v = stdlib_strided_smeanwd_ndarray( 4, x, 1, 0 );
-// returns 2.0f
-```
-
-The function accepts the following arguments:
-
--   **N**: `[in] CBLAS_INT` number of indexed elements.
--   **X**: `[in] float*` input array.
--   **strideX**: `[in] CBLAS_INT` stride length for `X`.
--   **offsetX**: `[in] CBLAS_INT` starting index for `X`.
-
-```c
-float stdlib_strided_smeanwd_ndarray( const CBLAS_INT N, const float *X, const CBLAS_INT strideX, const CBLAS_INT offsetX );
-```
-
-</section>
-
-<!-- /.usage -->
-
-<!-- C API usage notes. Make sure to keep an empty line after the `section` element and another before the `/section` close. -->
-
-<section class="notes">
-
-</section>
-
-<!-- /.notes -->
-
-<!-- C API usage examples. -->
-
-<section class="examples">
-
-### Examples
-
-```c
-#include "stdlib/stats/base/smeanwd.h"
-#include <stdio.h>
-
-int main( void ) {
-    // Create a strided array:
-    const float x[] = { 1.0f, 2.0f, 3.0f, 4.0f, 5.0f, 6.0f, 7.0f, 8.0f };
-
-    // Specify the number of elements:
-    const int N = 4;
-
-    // Specify the stride length:
-    const int strideX = 2;
-
-    // Compute the arithmetic mean:
-    float v = stdlib_strided_smeanwd( N, x, strideX );
-
-    // Print the result:
-    printf( "mean: %f\n", v );
-}
-```
-
-</section>
-
-<!-- /.examples -->
-
-</section>
-
-<!-- /.c -->
 
 * * *
 
@@ -414,7 +317,7 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 [arithmetic-mean]: https://en.wikipedia.org/wiki/Arithmetic_mean
 
-[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32
+[@stdlib/array/float32]: https://github.com/stdlib-js/array-float32/tree/umd
 
 [mdn-typed-array]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/TypedArray
 
@@ -424,13 +327,13 @@ Copyright &copy; 2016-2025. The Stdlib [Authors][stdlib-authors].
 
 <!-- <related-links> -->
 
-[@stdlib/stats/base/dmeanwd]: https://github.com/stdlib-js/stats-base-dmeanwd
+[@stdlib/stats/base/dmeanwd]: https://github.com/stdlib-js/stats-base-dmeanwd/tree/umd
 
-[@stdlib/stats/base/meanwd]: https://github.com/stdlib-js/stats-base-meanwd
+[@stdlib/stats/base/meanwd]: https://github.com/stdlib-js/stats-base-meanwd/tree/umd
 
-[@stdlib/stats/base/smean]: https://github.com/stdlib-js/stats-base-smean
+[@stdlib/stats/base/smean]: https://github.com/stdlib-js/stats-base-smean/tree/umd
 
-[@stdlib/stats/base/snanmeanwd]: https://github.com/stdlib-js/stats-base-snanmeanwd
+[@stdlib/stats/base/snanmeanwd]: https://github.com/stdlib-js/stats-base-snanmeanwd/tree/umd
 
 <!-- </related-links> -->
 
