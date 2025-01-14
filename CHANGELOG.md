@@ -4,7 +4,7 @@
 
 <section class="release" id="unreleased">
 
-## Unreleased (2025-01-08)
+## Unreleased (2025-01-14)
 
 <section class="features">
 
@@ -32,6 +32,7 @@
 
 <details>
 
+-   [`57d226a`](https://github.com/stdlib-js/stdlib/commit/57d226a2f5be49279cbdc9d3cc9030f369c4d74f) - **docs:** update examples of `stats/base/smeanwd` [(#4751)](https://github.com/stdlib-js/stdlib/pull/4751) _(by Aayush Khanna)_
 -   [`7e63aad`](https://github.com/stdlib-js/stdlib/commit/7e63aad8c0b42330b0933973bddea8d1c5e84862) - **fix:** wrap function calls in `API_SUFFIX` in native addons [(#4646)](https://github.com/stdlib-js/stdlib/pull/4646) _(by Aayush Khanna)_
 -   [`9b81fa1`](https://github.com/stdlib-js/stdlib/commit/9b81fa1ed74236c7abd35a32beca84e99d6d45f4) - **feat:** add C ndarray interface and refactor implementation for `stats/base/smeanwd` [(#4503)](https://github.com/stdlib-js/stdlib/pull/4503) _(by Aayush Khanna)_
 -   [`62364f6`](https://github.com/stdlib-js/stdlib/commit/62364f62ea823a3b52c2ad25660ecd80c71f8f36) - **style:** fix C comment alignment _(by Philipp Burckhardt)_
